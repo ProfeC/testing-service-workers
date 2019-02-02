@@ -2,13 +2,11 @@
 {
   "short_name": "profec-test-servwork",
   "name": "ProfeC.net Service Worker Testing",
-  /*
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
-  */
   "start_url": "/testing-service-workers/?utm_source=homescreen",
   "background_color": "#fafafa",
   "theme_color": "#fcfcfc"
