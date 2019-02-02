@@ -16,8 +16,8 @@ if ('serviceWorker' in navigator) {
 
 let CACHE_NAME = 'site-cache-v1';
 let urlsToCache = [
-    'index.css',
-    'index.js'
+    'styles/index.css',
+    'scripts/index.js'
 ];
 
 self.addEventListener('install', function(event) {
