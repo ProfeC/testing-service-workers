@@ -1,0 +1,30 @@
+{
+  "name": "testing-service-workers",
+  "version": "1.0.0",
+  "description": "Testing service workers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server --watch --reload-delay 1000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfeC/testing-service-workers.git"
+  },
+  "keywords": [
+    "testing",
+    "practice",
+    "javascript",
+    "html",
+    "learning"
+  ],
+  "author": "G. L. Clark, II",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProfeC/testing-service-workers/issues"
+  },
+  "homepage": "https://github.com/ProfeC/testing-service-workers#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3"
+  }
+}

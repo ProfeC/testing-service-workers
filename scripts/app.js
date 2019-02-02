@@ -1,9 +1,13 @@
-let CACHE_NAME = 'site-cache';
-let DATA_CACHE_NAME = 'data-cache';
-let PATH = '/testing-service-workers/';
+let VERSION_NUMBER = '-v2';
+let CACHE_NAME = 'site-cache' + VERSION_NUMBER;
+let DATA_CACHE_NAME = 'data-cache' + VERSION_NUMBER;
+// let PATH = '/testing-service-workers/';
+let PATH = '/';
 let urlsToCache = [
     PATH + 'styles/app.css',
-    PATH + 'scripts/app.js'
+    PATH + 'scripts/app.js',,
+    PATH + 'index.html',
+    PATH + 'page3.html'
 ];
 
 // console.info('urls', urlsToCache);

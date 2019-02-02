@@ -3,7 +3,20 @@ body {
   font-size: 1.3rem; /* make it biiiggg!!! */
 }
 
-header {}
+header {
+	background-color: rgba(96, 0, 0, 0.906);
+	color: bisque;
+	margin: 0 auto;
+	padding: 10px 25px;
+}
+
+header a {
+	border: 1px solid goldenrod;
+	color: inherit;
+	display: inline;
+	margin: 7px;
+	padding: 5px;
+}
 
 main {
   margin: 5px 15px;
@@ -16,6 +29,6 @@ footer {
 }
 
 #icon-credit {
-  font-size: .35rem;
   color: rgba(124, 124, 124, 0.8);
+  font-size: .35rem;
 }
