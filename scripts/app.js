@@ -1,8 +1,8 @@
-let CACHE_NAME = 'site-cache-v1';
+let CACHE_NAME = 'site-cache';
 let DATA_CACHE_NAME = 'data-cache';
 let urlsToCache = [
-    '/testing-service-workers/styles/index.css',
-    '/testing-service-workers/scripts/index.js'
+    '/testing-service-workers/styles/app.css',
+    '/testing-service-workers/scripts/app.js'
 ];
 
 // console.info('urls', urlsToCache);
