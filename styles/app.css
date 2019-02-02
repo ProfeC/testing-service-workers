@@ -3,3 +3,8 @@ body {
   font-size: 1.3rem; /* make it biiiggg!!! */
   margin: 5px 15px;
 }
+
+#icon-credit {
+  font-size: .35rem;
+  color: rgba(124, 124, 124, 0.3);
+}
