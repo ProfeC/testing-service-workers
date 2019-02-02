@@ -4,6 +4,11 @@ body {
   margin: 5px 15px;
 }
 
+footer {
+  background-color: rgba(0,0,0,0.6);
+  padding: 25px;
+}
+
 #icon-credit {
   font-size: .35rem;
   color: rgba(124, 124, 124, 0.3);
