@@ -1,6 +1,11 @@
 body {
   font-family: Helvetica, Arial;
   font-size: 1.3rem; /* make it biiiggg!!! */
+}
+
+header {}
+
+main {
   margin: 5px 15px;
   padding-bottom: 25px
 }
