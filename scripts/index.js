@@ -1,7 +1,7 @@
 let CACHE_NAME = 'site-cache-v1';
 let urlsToCache = [
-    '../styles/index.css',
-    '../scripts/index.js'
+    '/testing-service-workers/styles/index.css',
+    '/testing-service-workers/scripts/index.js'
 ];
 
 console.info('urls', urlsToCache);
