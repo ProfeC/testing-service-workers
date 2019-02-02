@@ -30,6 +30,8 @@ self.addEventListener('install', function(event) {
     );
 });
 
+console.info('caches', caches);
+
 /*
 self.addEventListener('fetch', function(event) {
   event.respondWith(
