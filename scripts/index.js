@@ -4,7 +4,7 @@
 // REFERENCE: https://developers.google.com/web/fundamentals/primers/service-workers/#register_a_service_worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sripts/index.js').then(function(registration) {
+        navigator.serviceWorker.register('scripts/index.js').then(function(registration) {
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
             }, function(err) {
