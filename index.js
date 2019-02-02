@@ -13,3 +13,20 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+let CACHE_NAME = 'site-cache-v1';
+let urlsToCache = [
+    'index.css',
+    'index.js'
+];
+
+self.addEventListener('install', function(event) {
+    // perform install steps
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+        .then(function(cache) {
+            console.log('opened cache');
+            return cache.addAll(urlsToCache);
+        })
+    });
+});
