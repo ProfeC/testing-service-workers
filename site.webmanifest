@@ -3,7 +3,7 @@
   "short_name": "profec-test-servwork",
   "name": "ProfeC.net Service Worker Testing",
   "icons": [{
-    "src": "/testing-service-workers/images/icon.png",
+    "src": "/testing-service-workers/icon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
