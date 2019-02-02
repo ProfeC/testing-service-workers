@@ -4,6 +4,8 @@ let urlsToCache = [
     'scripts/index.js'
 ];
 
+console.info('urls', urlsToCache);
+
 // REFERENCE: https://developers.google.com/web/fundamentals/primers/service-workers/#register_a_service_worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
@@ -28,6 +30,7 @@ self.addEventListener('install', function(event) {
     );
 });
 
+/*
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
@@ -41,3 +44,4 @@ self.addEventListener('fetch', function(event) {
     )
   );
 });
+*/
