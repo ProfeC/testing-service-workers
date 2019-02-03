@@ -1,8 +1,8 @@
 let VERSION_NUMBER = '-v1.3';
 let CACHE_NAME = 'site-cache' + VERSION_NUMBER;
 let DATA_CACHE_NAME = 'data-cache' + VERSION_NUMBER;
-// let PATH = '/testing-service-workers/';
-let PATH = './';
+let PATH = '/testing-service-workers/';
+// let PATH = './';
 let urlsToCache = [
     PATH + 'styles/app.css',
     PATH + 'scripts/app.js',
