@@ -10,12 +10,14 @@ function showUpdateBar() {
 	notificationHolder.className = 'show';
 }
 
-// The click event on the pop up notification
-document.getElementById('reload').addEventListener('click', function(){
-	newWorker.postMessage({ action: 'skipWaiting' });
-});
-
+// NOTE: Update content area
 let contentHolder = document.querySelector('#content');
 contentHolder.insertAdjacentHTML('afterbegin', '<p>Added some content with JS.</p>');
 
 // NOTE: Function to get JSON data.
+
+
+// The click event on the pop up notification
+document.getElementById('reload').addEventListener('click', function(){
+	newWorker.postMessage({ action: 'skipWaiting' });
+});
