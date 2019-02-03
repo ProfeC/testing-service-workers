@@ -1,74 +1,21 @@
-let VERSION_NUMBER = '-v2';
-let CACHE_NAME = 'site-cache' + VERSION_NUMBER;
-let DATA_CACHE_NAME = 'data-cache' + VERSION_NUMBER;
-// let PATH = '/testing-service-workers/';
-let PATH = '/';
-let urlsToCache = [
-    PATH + 'styles/app.css',
-    PATH + 'scripts/app.js',,
-    PATH + 'index.html',
-    PATH + 'page3.html'
-];
+// NOTE: Add notification area
+let notificationHolder = document.createElement('section');
+console.info('Notifications', notificationHolder);
+document.querySelector('body').insertAdjacentElement('afterbegin', notificationHolder);
+notificationHolder.setAttribute('id','notify');
+notificationHolder.className = 'hide';
+notificationHolder.insertAdjacentHTML('afterbegin', '<p><strong>A new version of this app is available. Click <a id="reload">here</a> to update.</strong></p>');
 
-// console.info('urls', urlsToCache);
-
-// REFERENCE: https://developers.google.com/web/fundamentals/primers/service-workers/#register_a_service_worker
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register(PATH + 'scripts/app.js')
-        .then(function(registration) {
-            // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        })
-        .catch(function(error) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', error);
-        });
-    });
+function showUpdateBar() {
+	notificationHolder.className = 'show';
 }
 
-self.addEventListener('install', function(event) {
-    // perform install steps
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-        .then(function(cache) {
-            console.log('opened cache');
-            return cache.addAll(urlsToCache);
-        })
-    );
+// The click event on the pop up notification
+document.getElementById('reload').addEventListener('click', function(){
+	newWorker.postMessage({ action: 'skipWaiting' });
 });
 
-console.info('caches', caches);
+let contentHolder = document.querySelector('#content');
+contentHolder.insertAdjacentHTML('afterbegin', '<p>Added some content with JS.</p>');
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).then(
-          function(response) {
-            // Check if we received a valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            // IMPORTANT: Clone the response. A response is a stream
-            // and because we want the browser to consume the response
-            // as well as the cache consuming the response, we need
-            // to clone it so we have two streams.
-            var responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(function(cache) {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
-      })
-    );
-});
+// NOTE: Function to get JSON data.

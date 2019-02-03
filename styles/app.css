@@ -32,3 +32,23 @@ footer {
   color: rgba(124, 124, 124, 0.8);
   font-size: .35rem;
 }
+
+#notify {
+	background-color: gold;
+	padding:25px;
+	position: fixed;
+	text-align: center;
+	z-index: 3;
+}
+
+.hide {
+	display: none;
+	visibility: hidden;
+}
+
+.show {
+	-webkit-animation: fadein 0.5s;
+	animation: fadein 0.5s;
+	display: block;
+	visibility: visible;
+}
