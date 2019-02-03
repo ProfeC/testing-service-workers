@@ -12,7 +12,7 @@ function showUpdateBar() {
 
 // NOTE: Update content area
 let contentHolder = document.querySelector('#content');
-contentHolder.insertAdjacentHTML('afterbegin', '<p>Added some content with JS.</p>');
+contentHolder.insertAdjacentHTML('afterbegin', '<p>Added some content with JS for version 1.6.</p>');
 
 // NOTE: Function to get JSON data.
 
