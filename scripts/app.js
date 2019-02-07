@@ -3,7 +3,7 @@
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
 		navigator.serviceWorker
-			.register(PATH + '../worker.js')
+			.register(PATH + 'worker.js')
 			.then(registration => {
 				// Registration was successful
 				console.log('ServiceWorker registration successful with scope: ', registration.scope);
