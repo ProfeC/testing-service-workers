@@ -1,68 +1,55 @@
-let VERSION_NUMBER = '-v1.6';
-let CACHE_NAME = 'site-cache' + VERSION_NUMBER;
-let DATA_CACHE_NAME = 'data-cache' + VERSION_NUMBER;
-let PATH = '/testing-service-workers/';
-// let PATH = './';
+let VERSION_NUMBER = 'v1.0.3';
+let CACHE_NAME = 'site-cache-' + VERSION_NUMBER;
+let DATA_CACHE_NAME = 'data-cache-' + VERSION_NUMBER;
+// let PATH = '/testing-service-workers/';
+let PATH = './';
 let urlsToCache = [
     PATH + 'styles/app.css',
     PATH + 'scripts/app.js',
-	PATH + 'index.html',
-	PATH + 'page2.html',
-    PATH + 'page3.html'
+	// PATH + 'index.html',
+	// PATH + 'page2.html',
+    // PATH + 'page3.html'
 ];
 let newWorker;
 
 console.info('urls', urlsToCache);
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-		navigator.serviceWorker.register(PATH + 'worker.js')
-        .then(function(registration) {
-            // Registration was successful
-			console.log('ServiceWorker registration successful with scope: ', registration.scope);
+// NOTE: Install
+self.addEventListener('install', (event) => {
+	console.info('Service Worker Installed.');
 
-			registration.addEventListener('updatefound', () => {
-				newWorker = registration.installing;
-
-				newWorker.addEventListener('statechange', () => {
-					// Has network.state changed?
-					console.info('New worker state', newWorker.state);
-					switch (newWorker.state) {
-					case 'installed':
-						if (navigator.serviceWorker.controller) {
-						// new update available
-						showUpdateBar();
-						}
-						// No update available
-						break;
-					}
-				});
-			});
-        })
-        .catch(function(error) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', error);
-        });
-	});
-
-	let refreshing;
-    navigator.serviceWorker.addEventListener('controllerchange', function () {
-      if (refreshing) return;
-      window.location.reload();
-      refreshing = true;
-    });
-}
-
-self.addEventListener('install', function(event) {
     // perform install steps
     event.waitUntil(
-        caches.open(CACHE_NAME)
-        .then(function(cache) {
-            console.log('opened cache');
-            return cache.addAll(urlsToCache);
-        })
+		caches
+			.open(CACHE_NAME)
+        	.then((cache) => {
+            	console.log('opened cache');
+            	cache.addAll(urlsToCache);
+			})
+			.then(() => self.skipWaiting())
     );
 });
+
+// NOTE: Activate
+self.addEventListener('activate', (event) => {
+	console.info('Service Worker Activated.');
+	var cacheKeeplist = [
+		CACHE_NAME,
+		DATA_CACHE_NAME
+	];
+
+	// NOTE: Remove old caches.
+	event.waitUntil(
+	  caches.keys().then(cacheList => {
+		return Promise.all(cacheList.map(name => {
+		  if (cacheKeeplist.indexOf(name) === -1) {
+			  console.info(`Removing cache: ${name}`)
+			return caches.delete(name);
+		  }
+		}));
+	  })
+	);
+  });
 
 console.info('caches', caches);
 
@@ -105,28 +92,13 @@ self.addEventListener('fetch', function(event) {
     );
 });
 
-self.addEventListener('activate', function(event) {
-	var cacheKeeplist = [
-		CACHE_NAME,
-		DATA_CACHE_NAME
-	];
-
-	event.waitUntil(
-	  caches.keys().then(function(keyList) {
-		return Promise.all(keyList.map(function(key) {
-		  if (cacheKeeplist.indexOf(key) === -1) {
-			return caches.delete(key);
-		  }
-		}));
-	  })
-	);
-  });
 
 
 
   /*
-  * REFERENCES
+  * REFERENCES (in no particular order)
   * https://developers.google.com/web/fundamentals/primers/service-workers/#register_a_service_worker
   * https://deanhume.com/displaying-a-new-version-available-progressive-web-app/
+  * https://www.youtube.com/watch?v=ksXwaWHCW6k
   *
   */

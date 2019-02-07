@@ -1,54 +1,55 @@
 body {
+  background-color: burlywood;
   font-family: Helvetica, Arial;
   font-size: 1.3rem; /* make it biiiggg!!! */
 }
 
 header {
-	background-color: rgba(96, 0, 0, 0.906);
-	color: bisque;
-	margin: 0 auto;
-	padding: 10px 25px;
+  background-color: rgba(96, 0, 0, 0.906);
+  color: bisque;
+  margin: 0 auto;
+  padding: 10px 25px;
 }
 
 header a {
-	border: 1px solid goldenrod;
-	color: inherit;
-	display: inline;
-	margin: 7px;
-	padding: 5px;
+  border: 1px solid goldenrod;
+  color: inherit;
+  display: inline;
+  margin: 7px;
+  padding: 5px;
 }
 
 main {
   margin: 5px 15px;
-  padding-bottom: 25px
+  padding-bottom: 25px;
 }
 
 footer {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 25px;
 }
 
 #icon-credit {
   color: rgba(124, 124, 124, 0.8);
-  font-size: .35rem;
+  font-size: 0.35rem;
 }
 
 #notify {
-	background-color: gold;
-	padding:25px;
-	position: fixed;
-	text-align: center;
-	z-index: 3;
+  background-color: gold;
+  padding: 25px;
+  position: fixed;
+  text-align: center;
+  z-index: 3;
 }
 
 .hide {
-	display: none;
-	visibility: hidden;
+  display: none;
+  visibility: hidden;
 }
 
 .show {
-	-webkit-animation: fadein 0.5s;
-	animation: fadein 0.5s;
-	display: block;
-	visibility: visible;
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+  display: block;
+  visibility: visible;
 }

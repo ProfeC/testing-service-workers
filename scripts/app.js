@@ -1,3 +1,45 @@
+
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+		navigator.serviceWorker
+			.register(PATH + '../worker.js')
+			.then(registration => {
+				// Registration was successful
+				console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+				registration.addEventListener('updatefound', () => {
+					newWorker = registration.installing;
+
+					newWorker.addEventListener('statechange', () => {
+						// Has network.state changed?
+						console.info('New worker state', newWorker.state);
+						switch (newWorker.state) {
+						case 'installed':
+							if (navigator.serviceWorker.controller) {
+							// new update available
+							showUpdateBar();
+							}
+							// No update available
+							break;
+						}
+					});
+				});
+			})
+			.catch(error => {
+				// registration failed :(
+				console.log('ServiceWorker registration failed: ', error);
+			});
+	});
+
+	let refreshing;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (refreshing) return;
+      window.location.reload();
+      refreshing = true;
+    });
+}
+
 // NOTE: Add notification area
 let notificationHolder = document.createElement('section');
 console.info('Notifications', notificationHolder);
@@ -12,7 +54,7 @@ function showUpdateBar() {
 
 // NOTE: Update content area
 let contentHolder = document.querySelector('#content');
-contentHolder.insertAdjacentHTML('afterbegin', '<p>Added some content with JS for version 1.6.</p>');
+contentHolder.insertAdjacentHTML('afterbegin', `<p>Added some content with JS for version ${VERSION_NUMBER}</p>`);
 
 // NOTE: Function to get JSON data.
 
