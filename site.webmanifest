@@ -1,13 +1,19 @@
 // REF:https://github.com/h5bp/html5-boilerplate/blob/master/dist/site.webmanifest
 {
-  "short_name": "profec-test-servwork",
+  "background_color": "#fafafa",
+  "description": "A simple site to test service workers.",
+  "dir": "ltr",
+  "display":"minimal-ui",
+  "lang":"en-US",
   "name": "ProfeC.net Service Worker Testing",
+  "orientation":"landscape-primary",
+  "prefer_related_applications": false,
+  "short_name": "profec-test-servwork",
+  "start_url": "?utm_source=homescreen",
+  "theme_color": "#fcfcfc",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
     "sizes": "192x192"
-  }],
-  "start_url": "?utm_source=homescreen",
-  "background_color": "#fafafa",
-  "theme_color": "#fcfcfc"
+  }]
 }
