@@ -1,4 +1,4 @@
-let VERSION_NUMBER = 'v1.0.6';
+let VERSION_NUMBER = 'v1.1.0';
 let CACHE_NAME = 'site-cache-' + VERSION_NUMBER;
 let DATA_CACHE_NAME = 'data-cache-' + VERSION_NUMBER;
 // let PATH = '/testing-service-workers/';
