@@ -1,4 +1,4 @@
-let VERSION_NUMBER = 'v1.1.0';
+const VERSION_NUMBER = '1.1.1';
 let CACHE_NAME = 'site-cache-' + VERSION_NUMBER;
 let DATA_CACHE_NAME = 'data-cache-' + VERSION_NUMBER;
 // let PATH = '/testing-service-workers/';
@@ -54,6 +54,8 @@ self.addEventListener('activate', (event) => {
 console.info('caches', caches);
 
 self.addEventListener('message', function (event) {
+	console.info('Message Event => ', event);
+
 	if (event.data.action === 'skipWaiting') {
 		self.skipWaiting();
 	}
@@ -81,9 +83,10 @@ self.addEventListener('fetch', function(event) {
             var responseToCache = response.clone();
 
             caches.open(CACHE_NAME)
-              .then(function(cache) {
-                cache.put(event.request, responseToCache);
-              });
+				.then(function(cache) {
+					console.info('Cache Info',cache);
+					cache.put(event.request, responseToCache);
+				});
 
             return response;
           }
@@ -91,6 +94,13 @@ self.addEventListener('fetch', function(event) {
       })
     );
 });
+
+self.addEventListener('push', function(event) {
+    event.waitUntil(
+      self.registration.showNotification('Hello!', options)
+	);
+});
+
 
 
 

@@ -1,10 +1,12 @@
-
-
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
 		navigator.serviceWorker
-			.register(PATH + 'worker.js')
+			.register(PATH + 'service-worker.js')
 			.then(registration => {
+				console.info('Registration Installing', registration.installing); // the installing worker, or undefined
+				console.info('Registration Waiting', registration.waiting);// the waiting worker, or undefined
+				console.info('Registration Active', registration.active); // the active worker, or undefined
+
 				// Registration was successful
 				console.log('ServiceWorker registration successful with scope: ', registration.scope);
 
